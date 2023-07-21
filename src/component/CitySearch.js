@@ -1,29 +1,29 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 
 const CitySearch = ({ getAirQuality }) => {
   const [inputValue, setInputValue] = useState("");
 
-  const HandleInputChange = (event) => {
+  const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
-  const HandleSearch = (event) => {
-    event.preventDefault();
-    const FormattedCity = inputValue.replace(/ /g, "-");
-    getAirQuality(FormattedCity);
-  };
 
+  const handleSearch = (event) => {
+    event.preventDefault();
+    const formattedCity = inputValue.replace(/ /g, "-");
+    getAirQuality(formattedCity);
+  };
   return (
-    <div>
-      <form onSubmit={HandleSearch}>
-        <input
-          type="text"
-          placeholder="Enter city"
-          onChange={HandleInputChange}
-        ></input>
-        <button type="submit">Search</button>
-      </form>
-    </div>
+    <form onSubmit={handleSearch} className="mb-4">
+      <input
+        type="text"
+        placeholder="Enter city..."
+        onChange={handleInputChange}
+        className="form-control"
+      />
+      <button type="submit" className="btn btn-primary mt-3">
+        Search
+      </button>
+    </form>
   );
 };
 
